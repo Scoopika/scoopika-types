@@ -1,27 +1,30 @@
-interface ToolParameters {
+import { Parameter } from "./parameters";
+import { Prompt } from "./prompts";
+
+export interface ToolParameters {
   type: "object";
   properties: Record<string, Parameter>;
   required?: Array<string>;
 }
 
-interface ToolFunction {
+export interface ToolFunction {
   name: string;
   description: string;
   parameters: ToolParameters;
 }
 
-interface Tool {
+export interface Tool {
   type: "function";
   function: ToolFunction;
 }
 
-interface FunctionToolSchema {
+export interface FunctionToolSchema {
   type: "function";
   executor: (inputs: Record<string, any>) => any | Promise<any>;
   tool: Tool;
 }
 
-interface ApiToolSchema {
+export interface ApiToolSchema {
   type: "api";
   url: string;
   method: "get" | "post" | "delete" | "post" | "patch" | "put";
@@ -29,10 +32,10 @@ interface ApiToolSchema {
   tool: Tool;
 }
 
-interface SubpromptToolSchema {
+export interface SubpromptToolSchema {
   type: "subprompt";
   prompt: Prompt;
   tool: Tool;
 }
 
-type ToolSchema = FunctionToolSchema | ApiToolSchema | SubpromptToolSchema;
+export type ToolSchema = FunctionToolSchema | ApiToolSchema | SubpromptToolSchema;

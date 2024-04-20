@@ -1,0 +1,8 @@
+{
+  "name": "@scoopika/types",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.d.ts",
+  "author": "",
+  "license": "ISC"
+}

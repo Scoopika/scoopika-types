@@ -1,18 +1,19 @@
-interface StoreSession {
+
+export interface StoreSession {
   id: string;
   user_name?: string;
   saved_prompts: Record<string, string>;
   user_id?: string;
 }
 
-interface ContentHistory {
+export interface ContentHistory {
   role: "system" | "user" | "assistant" | "model";
   follow_up?: boolean;
   name?: string;
   content: string;
 }
 
-interface ToolHistory {
+export interface ToolHistory {
   role: "tool";
   tool_call_id: string;
   name: string;
@@ -20,11 +21,11 @@ interface ToolHistory {
   content: string;
 }
 
-interface ToolCallHistory {
+export interface ToolCallHistory {
   role: "call";
   name: string;
   follow_up?: boolean;
   args: string;
 }
 
-type LLMHistory = ContentHistory | ToolHistory;
+export type LLMHistory = ContentHistory | ToolHistory;
