@@ -91,6 +91,13 @@ export interface GoogleClient {
 export type LLMClient = OpenAIClient | GoogleClient;
 export type LLMHosts = OpenAI | GoogleGenerativeAI;
 
+export type AllEngines = "openai" | "google" | "together" | "fireworks";
+
+export type RawEngines = Record<
+  AllEngines,
+  string
+>
+
 export interface LLMHost<Client> {
   helpers: Record<string, Function>;
   model_role: "assistant" | "model";
