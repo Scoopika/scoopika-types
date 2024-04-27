@@ -4,13 +4,19 @@
  so the concept "LLM" means any model that can be run with a prompt somehow. 
 */
 
+import { LLMHistory } from "./history";
+import { ImageSize } from "./prompts";
+import { Tool, ToolParameters } from "./tools";
+import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { StreamFunc } from "./agents";
 
-interface LLMResponseFormat {
+export interface LLMResponseFormat {
   type: "json_object";
   schema: ToolParameters;
 }
 
-interface LLMCompletionBaseInputs {
+export interface LLMCompletionBaseInputs {
   model: string;
   messages: LLMHistory[];
   response_format?: LLMResponseFormat;
@@ -19,13 +25,13 @@ interface LLMCompletionBaseInputs {
   options?: Record<string, any>;
 }
 
-interface LLMCompletionToolsInputs extends LLMCompletionBaseInputs {
+export interface LLMCompletionToolsInputs extends LLMCompletionBaseInputs {
   tools: Tool[];
 }
 
-type LLMCompletionInputs = LLMCompletionBaseInputs | LLMCompletionToolsInputs;
+export type LLMCompletionInputs = LLMCompletionBaseInputs | LLMCompletionToolsInputs;
 
-interface LLMFunctionBaseInputs {
+export interface LLMFunctionBaseInputs {
   model: string;
   tools: Tool[];
   messages: LLMHistory[];
@@ -37,14 +43,14 @@ interface LLMFunctionBaseInputs {
   options: Record<string, any>;
 }
 
-interface LLMFunctionImageInputs {
+export interface LLMFunctionImageInputs {
   model: string;
   prompt: string;
   n: number;
   size?: ImageSize;
 }
 
-interface LLMToolCall {
+export interface LLMToolCall {
   id: string;
   type: "function";
   function: {
@@ -53,39 +59,39 @@ interface LLMToolCall {
   };
 }
 
-interface LLMTextResponse {
+export interface LLMTextResponse {
   type: "text";
   content: string;
   tool_calls?: LLMToolCall[];
   follow_up_history?: any[];
 }
 
-interface LLMImageResponse {
+export interface LLMImageResponse {
   type: "image";
   content: string[];
 }
 
-interface LLMJsonResponse {
+export interface LLMJsonResponse {
   type: "object";
   content: Record<string, any>;
 }
 
-type LLMResponse = LLMTextResponse | LLMImageResponse | LLMJsonResponse;
+export type LLMResponse = LLMTextResponse | LLMImageResponse | LLMJsonResponse;
 
-interface OpenAIClient {
+export interface OpenAIClient {
   host: "openai";
-  client: require("openai").OpenAI;
+  client: OpenAI;
 }
 
-interface GoogleClient {
+export interface GoogleClient {
   host: "google";
-  client: require("@google/generative-ai").GoogleGenerativeAI;
+  client: GoogleGenerativeAI;
 }
 
-type LLMClient = OpenAIClient | GoogleClient;
-type LLMHosts = OpenAI | GoogleGenerativeAI;
+export type LLMClient = OpenAIClient | GoogleClient;
+export type LLMHosts = OpenAI | GoogleGenerativeAI;
 
-interface LLMHost<Client> {
+export interface LLMHost<Client> {
   helpers: Record<string, Function>;
   model_role: "assistant" | "model";
   system_role: "user" | "system";
