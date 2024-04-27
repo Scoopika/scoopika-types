@@ -78,8 +78,14 @@ export interface LLMJsonResponse {
 
 export type LLMResponse = LLMTextResponse | LLMImageResponse | LLMJsonResponse;
 
+export type AllEngines = "openai" | "google" | "together" | "fireworks";
+
+export type RawEngines = Partial<{
+  [key in AllEngines]: string
+}>
+
 export interface OpenAIClient {
-  host: "openai";
+  host: "openai" | "together" | "fireworks";
   client: OpenAI;
 }
 
@@ -91,11 +97,6 @@ export interface GoogleClient {
 export type LLMClient = OpenAIClient | GoogleClient;
 export type LLMHosts = OpenAI | GoogleGenerativeAI;
 
-export type AllEngines = "openai" | "google" | "together" | "fireworks";
-
-export type RawEngines = Partial<{
-  [key in AllEngines]: string
-}>
 
 export interface LLMHost<Client> {
   helpers: Record<string, Function>;
