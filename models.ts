@@ -93,10 +93,9 @@ export type LLMHosts = OpenAI | GoogleGenerativeAI;
 
 export type AllEngines = "openai" | "google" | "together" | "fireworks";
 
-export type RawEngines = Record<
-  AllEngines,
-  string
->
+export type RawEngines = Partial<{
+  [key in AllEngines]: string
+}>
 
 export interface LLMHost<Client> {
   helpers: Record<string, Function>;
