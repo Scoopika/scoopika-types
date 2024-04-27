@@ -7,7 +7,7 @@ export interface StoreSession {
 }
 
 export interface ContentHistory {
-  role: "system" | "user" | "assistant" | "model";
+  role: "system" | "user" | "assistant" | "model" | "prompt";
   follow_up?: boolean;
   name?: string;
   content: string;
