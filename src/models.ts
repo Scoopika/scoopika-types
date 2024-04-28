@@ -97,11 +97,11 @@ export interface GoogleClient {
 export type LLMClient = OpenAIClient | GoogleClient;
 export type LLMHosts = OpenAI | GoogleGenerativeAI;
 
-
 export interface LLMHost<Client> {
   helpers: Record<string, Function>;
   model_role: "assistant" | "model";
   system_role: "user" | "system";
+  allow_vision?: string[];
   text: (
     run_id: string,
     client: Client,
