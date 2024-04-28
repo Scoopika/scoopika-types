@@ -1,11 +1,13 @@
-export type Input = string | number | boolean | Array<string | number | boolean>;
+export type Input = string | number | boolean | Array<string | number | boolean> | Object;
 
-export type Plug = {
-    rag?: string | ((context: string) => string | Promise<string>);
-    images?: string[];
+export type PlugFunc = (context: string) => (string | Promise<string>);
+
+export interface Plug {
+  rag?: string | PlugFunc;
+  images?: string[];
 };
 
 export type Inputs = Record<string, Input> & {
-    message?: string;
-    plug?: Plug;
+  message?: string;
+  plug?: Plug;
 };
