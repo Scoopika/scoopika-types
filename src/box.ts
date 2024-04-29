@@ -8,3 +8,11 @@ export interface BoxData {
   manager: string;
   llm_client: string;
 }
+
+export interface BoxStream {
+  agent_name: string;
+  run_id: string;
+  content: string;
+}
+
+export type BoxStreamFunc = (stream: BoxStream) => (undefined | void | unknown);

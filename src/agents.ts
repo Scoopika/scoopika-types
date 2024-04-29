@@ -45,9 +45,9 @@ export interface ToolCalledMessage {
   result: string;
 }
 
-export type StreamFunc = (stream: StreamMessage) => undefined;
-export type StatusUpdateFunc = (status: string) => undefined;
-export type ToolCalledFunc = (data: ToolCalledMessage) => undefined;
+export type StreamFunc = (stream: StreamMessage) => (undefined | void | unknown);
+export type StatusUpdateFunc = (status: string) => (undefined | void | unknown);
+export type ToolCalledFunc = (data: ToolCalledMessage) => (undefined | void | unknown);
 
 export interface StreamListener {
   type: "stream";
