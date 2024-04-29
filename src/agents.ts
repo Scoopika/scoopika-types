@@ -38,6 +38,7 @@ export interface StreamMessage {
   final?: boolean;
   run_id: string;
   content: string;
+  prompt_name: string;
 }
 
 export interface ToolCalledMessage {

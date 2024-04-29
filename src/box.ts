@@ -11,6 +11,7 @@ export interface BoxData {
 
 export interface BoxStream {
   agent_name: string;
+  prompt_name: string;
   run_id: string;
   content: string;
 }
