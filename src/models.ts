@@ -103,6 +103,7 @@ export interface LLMHost<Client> {
   system_role: "user" | "system";
   allow_vision?: string[];
   text: (
+    prompt_name: string,
     run_id: string,
     client: Client,
     stream: StreamFunc,
