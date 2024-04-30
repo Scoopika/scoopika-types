@@ -31,17 +31,18 @@ export type LLMHistory = ContentHistory | ToolHistory;
 
 export interface Store {
   newSession: (id: string, user_name?: string) => void;
-  getSession: (id: string) => Promise<StoreSession>;
-
+  getSession: (id: string) => Promise<StoreSession | undefined>;
   updateSession: (
     id: string,
     new_data: {
       user_name?: string;
       saved_prompts?: Record<string, string>;
-    }
+    },
   ) => void;
-
   getHistory: (session: StoreSession) => Promise<LLMHistory[]>;
   pushHistory: (session: StoreSession, history: LLMHistory) => Promise<void>;
-  batchPushHistory: (session: StoreSession, history: LLMHistory[]) => Promise<void>;
+  batchPushHistory: (
+    session: StoreSession,
+    history: LLMHistory[],
+  ) => Promise<void>;
 }
