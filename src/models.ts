@@ -109,7 +109,13 @@ export interface LLMHost<Client> {
     stream: StreamFunc,
     inputs: LLMFunctionBaseInputs,
   ) => Promise<LLMTextResponse>;
-  image: (client: Client, inputs: LLMFunctionImageInputs) => Promise<LLMResponse>;
+  image: (
+    prompt_name: string,
+    run_id: string,
+    client: Client,
+    stream: StreamFunc,
+    inputs: LLMFunctionImageInputs
+  ) => Promise<LLMImageResponse>;
   json: (
     client: Client,
     inputs: LLMFunctionBaseInputs,

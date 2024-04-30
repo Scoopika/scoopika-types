@@ -26,7 +26,8 @@ export type ImageSize =
   | "1792x1024"
   | "1792x1024"
   | null
-  | undefined;
+  | undefined
+  | string;
 
 export interface ImagePrompt {
   id: string;
