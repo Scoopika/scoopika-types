@@ -36,6 +36,7 @@ export interface AgentResponse {
 
 export interface StreamMessage {
   final?: boolean;
+  types: "text" | "image";
   run_id: string;
   content: string;
   prompt_name: string;
