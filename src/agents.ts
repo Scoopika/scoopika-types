@@ -21,13 +21,6 @@ export interface AgentInnerRunResult {
   updated_history: LLMHistory[];
 }
 
-export interface AgentRunInputs {
-  run_id: string;
-  session: StoreSession;
-  agent: AgentData;
-  inputs: Inputs;
-}
-
 export interface AgentResponse {
   run_id: string;
   session_id: string;
@@ -67,3 +60,12 @@ export interface ToolCalledListener {
 }
 
 export type OnListener = StreamListener | StatusUpdateListener | ToolCalledListener;
+
+export interface AgentRunInputs {
+  run_id: string;
+  session: StoreSession;
+  agent: AgentData;
+  inputs: Inputs;
+  stream: StreamFunc;
+}
+

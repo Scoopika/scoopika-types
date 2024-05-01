@@ -10,5 +10,6 @@ export interface Plug {
 export type Inputs = Record<string, Input> & {
   message?: string;
   session_id?: string;
+  run_id?: string;
   plug?: Plug;
 };
