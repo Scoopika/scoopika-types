@@ -17,14 +17,20 @@ export interface AgentData {
 }
 
 export interface AgentInnerRunResult {
-  responses: Record<string, LLMResponse>;
+  responses: {
+    prompt_name: string;
+    response: LLMResponse;
+  }[];
   updated_history: LLMHistory[];
 }
 
 export interface AgentResponse {
   run_id: string;
   session_id: string;
-  responses: Record<string, LLMResponse>;
+  responses: {
+    prompt_name: string;
+    response: LLMResponse;
+  }[];
 }
 
 export interface StreamMessage {

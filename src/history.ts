@@ -1,3 +1,7 @@
+import { AgentResponse } from "./agents";
+import { Inputs } from "./inputs";
+import { LLMResponse, LLMToolCall } from "./models";
+
 export interface StoreSession {
   id: string;
   user_name?: string;
@@ -29,8 +33,29 @@ export interface ToolCallHistory {
 
 export type LLMHistory = ContentHistory | ToolHistory;
 
+export interface UserRunHistory {
+  role: "user";
+  request: Inputs;
+}
+
+export interface AgentRunHistory {
+  role: "agent";
+  responses: AgentResponse[];
+  tools: {
+    call: LLMToolCall;
+    result: any;
+  }[];
+}
+
+export type RunHistory = UserRunHistory | AgentRunHistory;
+
 export interface Store {
-  newSession: (id: string, user_name?: string) => void;
+  newSession: (data: {
+    id?: string;
+    user_id?: string;
+    user_name?: string;
+  }) => void;
+
   getSession: (id: string) => Promise<StoreSession | undefined>;
   updateSession: (
     id: string,
@@ -39,10 +64,13 @@ export interface Store {
       saved_prompts?: Record<string, string>;
     },
   ) => void;
-  getHistory: (session: StoreSession) => Promise<LLMHistory[]>;
-  pushHistory: (session: StoreSession, history: LLMHistory) => Promise<void>;
+
+  getHistory: (session: StoreSession | string) => Promise<LLMHistory[]>;
+  pushHistory: (session: StoreSession | string, history: LLMHistory) => Promise<void>;
   batchPushHistory: (
     session: StoreSession,
     history: LLMHistory[],
   ) => Promise<void>;
+
+  getRuns: (session: StoreSession) => Promise<RunHistory[]>;
 }
