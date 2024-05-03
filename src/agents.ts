@@ -22,7 +22,7 @@ export interface AgentInnerRunResult {
     response: LLMResponse;
   }[];
   updated_history: LLMHistory[];
-  run: RunHistory;
+  runs: LLMHistory[];
 }
 
 export interface AgentResponse {

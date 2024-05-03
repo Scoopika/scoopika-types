@@ -1,6 +1,6 @@
 {
   "name": "@scoopika/types",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "",
   "main": "",
   "types": "./dist/index.d.ts",
