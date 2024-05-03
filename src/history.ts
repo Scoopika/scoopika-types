@@ -36,6 +36,7 @@ export type LLMHistory = ContentHistory | ToolHistory;
 export interface UserRunHistory {
   at: number;
   role: "user";
+  user_id?: string;
   request: Inputs;
 }
 
@@ -44,6 +45,7 @@ export interface AgentRunHistory {
   role: "agent";
   run_id: string;
   session_id: string;
+  agent_id: string;
   responses: {
     prompt_name: string;
     response: LLMResponse
