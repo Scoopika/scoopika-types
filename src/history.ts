@@ -42,10 +42,7 @@ export interface UserRunHistory {
 export interface AgentRunHistory {
   at: number;
   role: "agent";
-  responses: {
-    prompt_name: string;
-    responses: AgentResponse[];
-  }[];
+  responses: AgentResponse[];
   tools: {
     call: LLMToolCall;
     result: any;
