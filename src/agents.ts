@@ -1,7 +1,7 @@
 import { Prompt } from "./prompts";
 import { ToolSchema } from "./tools";
 import { LLMResponse } from "./models";
-import { LLMHistory, StoreSession } from "./history";
+import { LLMHistory, RunHistory, StoreSession } from "./history";
 import { Inputs } from "./inputs";
 
 export interface AgentData {
@@ -22,6 +22,7 @@ export interface AgentInnerRunResult {
     response: LLMResponse;
   }[];
   updated_history: LLMHistory[];
+  run: RunHistory;
 }
 
 export interface AgentResponse {
