@@ -1,6 +1,6 @@
 import { Prompt } from "./prompts";
 import { ToolSchema } from "./tools";
-import { LLMResponse } from "./models";
+import { LLMResponse, LLMToolCall } from "./models";
 import { LLMHistory, RunHistory, StoreSession } from "./history";
 import { Inputs } from "./inputs";
 
@@ -23,6 +23,10 @@ export interface AgentInnerRunResult {
   }[];
   updated_history: LLMHistory[];
   runs: LLMHistory[];
+  tools_history: {
+    call: LLMToolCall;
+    result: any;
+  }[];
 }
 
 export interface AgentResponse {

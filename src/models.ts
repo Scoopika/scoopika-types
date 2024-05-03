@@ -63,6 +63,10 @@ export interface LLMTextResponse {
   type: "text";
   content: string;
   tool_calls?: LLMToolCall[];
+  tools_history: {
+    call: LLMToolCall;
+    result: any;
+  }[];
   follow_up_history?: any[];
 }
 
