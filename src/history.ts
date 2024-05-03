@@ -34,11 +34,13 @@ export interface ToolCallHistory {
 export type LLMHistory = ContentHistory | ToolHistory;
 
 export interface UserRunHistory {
+  at: number;
   role: "user";
   request: Inputs;
 }
 
 export interface AgentRunHistory {
+  at: number;
   role: "agent";
   responses: AgentResponse[];
   tools: {
