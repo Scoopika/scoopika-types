@@ -38,4 +38,7 @@ export interface SubpromptToolSchema {
   tool: Tool;
 }
 
-export type ToolSchema = FunctionToolSchema | ApiToolSchema | SubpromptToolSchema;
+export type ToolSchema =
+  | FunctionToolSchema
+  | ApiToolSchema
+  | SubpromptToolSchema;

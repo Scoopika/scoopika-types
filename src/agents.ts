@@ -51,9 +51,11 @@ export interface ToolCalledMessage {
   result: string;
 }
 
-export type StreamFunc = (stream: StreamMessage) => (undefined | void | unknown);
-export type StatusUpdateFunc = (status: string) => (undefined | void | unknown);
-export type ToolCalledFunc = (data: ToolCalledMessage) => (undefined | void | unknown);
+export type StreamFunc = (stream: StreamMessage) => undefined | void | unknown;
+export type StatusUpdateFunc = (status: string) => undefined | void | unknown;
+export type ToolCalledFunc = (
+  data: ToolCalledMessage,
+) => undefined | void | unknown;
 
 export interface StreamListener {
   type: "stream";
@@ -70,7 +72,10 @@ export interface ToolCalledListener {
   func: ToolCalledFunc;
 }
 
-export type OnListener = StreamListener | StatusUpdateListener | ToolCalledListener;
+export type OnListener =
+  | StreamListener
+  | StatusUpdateListener
+  | ToolCalledListener;
 
 export interface AgentRunInputs {
   run_id: string;
@@ -79,4 +84,3 @@ export interface AgentRunInputs {
   inputs: Inputs;
   stream: StreamFunc;
 }
-

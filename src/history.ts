@@ -48,7 +48,7 @@ export interface AgentRunHistory {
   agent_id: string;
   responses: {
     prompt_name: string;
-    response: LLMResponse
+    response: LLMResponse;
   }[];
   tools: {
     call: LLMToolCall;
@@ -75,7 +75,10 @@ export interface Store {
   ) => void;
 
   getHistory: (session: StoreSession | string) => Promise<LLMHistory[]>;
-  pushHistory: (session: StoreSession | string, history: LLMHistory) => Promise<void>;
+  pushHistory: (
+    session: StoreSession | string,
+    history: LLMHistory,
+  ) => Promise<void>;
   batchPushHistory: (
     session: StoreSession,
     history: LLMHistory[],

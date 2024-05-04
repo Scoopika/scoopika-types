@@ -1,5 +1,4 @@
-import { AgentData, AgentResponse } from "./agents";
-import { Hooks } from "./hooks";
+import { AgentData } from "./agents";
 import { ToolSchema } from "./tools";
 
 export interface BoxData {
@@ -18,13 +17,4 @@ export interface BoxStream {
   content: string;
 }
 
-export type BoxStreamFunc = (stream: BoxStream) => (undefined | void | unknown);
-
-export interface BoxHooks extends Hooks {
-  onSelectAgent?: (agent: AgentData) => any;
-  onBoxFinish?: (res: { name: string; run: AgentResponse }[]) => any;
-  onAgentResponse?: (res: {
-    name: string;
-    response: AgentResponse;
-  }) => any;
-}
+export type BoxStreamFunc = (stream: BoxStream) => undefined | void | unknown;

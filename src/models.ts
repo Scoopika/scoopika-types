@@ -1,4 +1,3 @@
-
 /*
  LLM Clients, responses, are also meant for image generation models,
  so the concept "LLM" means any model that can be run with a prompt somehow. 
@@ -29,7 +28,9 @@ export interface LLMCompletionToolsInputs extends LLMCompletionBaseInputs {
   tools: Tool[];
 }
 
-export type LLMCompletionInputs = LLMCompletionBaseInputs | LLMCompletionToolsInputs;
+export type LLMCompletionInputs =
+  | LLMCompletionBaseInputs
+  | LLMCompletionToolsInputs;
 
 export interface LLMFunctionBaseInputs {
   model: string;
@@ -85,8 +86,8 @@ export type LLMResponse = LLMTextResponse | LLMImageResponse | LLMJsonResponse;
 export type AllEngines = "openai" | "google" | "together" | "fireworks";
 
 export type RawEngines = Partial<{
-  [key in AllEngines]: string
-}>
+  [key in AllEngines]: string;
+}>;
 
 export interface OpenAIClient {
   host: "openai" | "together" | "fireworks";
@@ -118,7 +119,7 @@ export interface LLMHost<Client> {
     run_id: string,
     client: Client,
     stream: StreamFunc,
-    inputs: LLMFunctionImageInputs
+    inputs: LLMFunctionImageInputs,
   ) => Promise<LLMImageResponse>;
   json: (
     client: Client,
