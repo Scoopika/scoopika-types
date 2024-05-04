@@ -83,4 +83,9 @@ export interface AgentRunInputs {
   agent: AgentData;
   inputs: Inputs;
   stream: StreamFunc;
+  toolCallStream: (call: LLMToolCall) => any;
+  toolResStream: (tool: {
+    call: LLMToolCall;
+    result: any;
+  }) => any;
 }
