@@ -66,6 +66,11 @@ export interface ServerEndStream {
   data: any;
 }
 
+export interface ServerErrorStream {
+  type: "error";
+  error: string;
+}
+
 export type ServerStream = 
   | ServerBaseStream
   | ServerStartStream
@@ -77,3 +82,4 @@ export type ServerStream =
   | ServerAgentResponseStream
   | ServerBoxResponseStream
   | ServerEndStream
+  | ServerErrorStream
