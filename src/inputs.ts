@@ -10,11 +10,16 @@ export type PlugFunc = (context: string) => string | Promise<string>;
 export interface Plug {
   rag?: string | PlugFunc;
   images?: string[];
+  data?: {
+    description: string;
+    data: string;
+  }[];
 }
 
 export type Inputs = Record<string, Input> & {
   message?: string;
   session_id?: string;
   run_id?: string;
+  save_history?: boolean;
   plug?: Plug;
 };
