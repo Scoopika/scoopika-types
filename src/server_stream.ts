@@ -47,7 +47,10 @@ export interface ServerAgentStream {
 
 export interface ServerAgentResponseStream {
   type: "agent_response";
-  data: AgentResponse;
+  data: {
+    name: string;
+    response: AgentResponse;
+  };
 }
 
 export interface ServerBoxResponseStream {
