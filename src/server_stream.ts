@@ -11,7 +11,7 @@ export interface ServerStartStream {
   data: {
     run_id: string;
     session_id: string;
-  }
+  };
 }
 
 export interface ServerTokenStream {
@@ -34,12 +34,20 @@ export interface ServerToolResStream {
   data: {
     call: LLMToolCall;
     result: any;
-  }
+  };
 }
 
 export interface ServerAgentStream {
   type: "select_agent";
-  data: AgentData;
+  data: {
+    name: string;
+    response: AgentResponse;
+  };
+}
+
+export interface ServerAgentResponseStream {
+  type: "agent_response";
+  data: AgentResponse;
 }
 
 export interface ServerBoxResponseStream {

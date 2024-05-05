@@ -1,3 +1,4 @@
+import { AgentResponse } from "./agents";
 import { Parameter } from "./parameters";
 import { Prompt } from "./prompts";
 
@@ -35,6 +36,16 @@ export interface ApiToolSchema {
 export interface SubpromptToolSchema {
   type: "subprompt";
   prompt: Prompt;
+  tool: Tool;
+}
+
+export interface AgentToolSchema {
+  type: "agent";
+  executor: (
+    session_id: string,
+    run_id: string,
+    instructions: string 
+  ) => AgentResponse;
   tool: Tool;
 }
 
