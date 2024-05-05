@@ -58,7 +58,19 @@ export interface ServerBoxResponseStream {
   }[];
 }
 
-export interface ServerResponseAction {
+export interface ServerEndStream {
   type: "end";
   data: any;
 }
+
+export type ServerStream = 
+  | ServerBaseStream
+  | ServerStartStream
+  | ServerTokenStream
+  | ServerResponseStream
+  | ServerToolCallStream
+  | ServerToolResStream
+  | ServerAgentStream
+  | ServerAgentResponseStream
+  | ServerBoxResponseStream
+  | ServerEndStream
