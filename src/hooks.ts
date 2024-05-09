@@ -11,6 +11,7 @@ export interface Hooks {
   onClientSideAction?: (
     action: {
       id: string;
+      run_id: string;
       tool_name: string;
       arguments: Record<string, any>;
     }
