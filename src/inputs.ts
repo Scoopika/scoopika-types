@@ -1,3 +1,5 @@
+import { ToolSchema } from "./tools";
+
 export type Input =
   | string
   | number
@@ -17,6 +19,7 @@ export interface Plug {
 }
 
 export type Inputs = Record<string, Input> & {
+  tools?: ToolSchema[];
   message?: string;
   session_id?: string;
   run_id?: string;
