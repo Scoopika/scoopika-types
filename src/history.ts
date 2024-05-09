@@ -45,6 +45,7 @@ export interface AgentRunHistory {
   run_id: string;
   session_id: string;
   agent_id: string;
+  agent_name: string;
   response: LLMResponse;
   tools: {
     call: LLMToolCall;
