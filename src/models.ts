@@ -108,14 +108,12 @@ export interface LLMHost<Client> {
   system_role: "user" | "system";
   allow_vision?: string[];
   text: (
-    prompt_name: string,
     run_id: string,
     client: Client,
     stream: StreamFunc,
     inputs: LLMFunctionBaseInputs,
   ) => Promise<LLMTextResponse>;
   image: (
-    prompt_name: string,
     run_id: string,
     client: Client,
     stream: StreamFunc,
@@ -125,5 +123,6 @@ export interface LLMHost<Client> {
     client: Client,
     inputs: LLMFunctionBaseInputs,
     schema: ToolParameters,
+    stream: StreamFunc
   ) => Promise<LLMJsonResponse>;
 }

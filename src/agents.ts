@@ -32,10 +32,7 @@ export interface AgentInnerRunResult {
 export interface AgentResponse {
   run_id: string;
   session_id: string;
-  responses: {
-    prompt_name: string;
-    response: LLMResponse;
-  }[];
+  response: LLMResponse;
 }
 
 export interface StreamMessage {
@@ -43,7 +40,6 @@ export interface StreamMessage {
   type: "text" | "image";
   run_id: string;
   content: string;
-  prompt_name: string;
 }
 
 export interface ToolCalledMessage {

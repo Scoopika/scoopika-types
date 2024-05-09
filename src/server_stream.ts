@@ -68,7 +68,7 @@ export interface ServerEndStream {
 
 export interface ServerErrorStream {
   type: "error";
-  error: string;
+  data: string;
 }
 
 export type ServerStream = 

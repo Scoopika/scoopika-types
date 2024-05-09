@@ -1,4 +1,3 @@
-import { AgentResponse } from "./agents";
 import { Inputs } from "./inputs";
 import { LLMResponse, LLMToolCall } from "./models";
 
@@ -46,10 +45,7 @@ export interface AgentRunHistory {
   run_id: string;
   session_id: string;
   agent_id: string;
-  responses: {
-    prompt_name: string;
-    response: LLMResponse;
-  }[];
+  response: LLMResponse;
   tools: {
     call: LLMToolCall;
     result: any;

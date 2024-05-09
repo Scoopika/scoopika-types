@@ -12,7 +12,6 @@ export interface BoxData {
 export interface BoxStream {
   type: "text" | "image";
   agent_name: string;
-  prompt_name: string;
   run_id: string;
   content: string;
 }
