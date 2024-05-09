@@ -33,9 +33,8 @@ export interface ApiToolSchema {
   tool: Tool;
 }
 
-export interface SubpromptToolSchema {
-  type: "subprompt";
-  prompt: Prompt;
+export interface ClientSideToolSchema {
+  type: "client-side";
   tool: Tool;
 }
 
@@ -52,4 +51,4 @@ export interface AgentToolSchema {
 export type ToolSchema =
   | FunctionToolSchema
   | ApiToolSchema
-  | SubpromptToolSchema;
+  | ClientSideToolSchema;
