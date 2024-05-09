@@ -8,8 +8,26 @@ export interface StoreSession {
   user_id?: string;
 }
 
+export interface UserTextContent {
+  type: "text";
+  text: string;
+}
+
+export interface UserImageContent {
+  type: "image_url";
+  image_url: {
+    url: string;
+  }
+}
+
+export interface UserContentHistory {
+  role: "user";
+  name?: string;
+  content: string | Array<UserTextContent | UserImageContent>;
+}
+
 export interface ContentHistory {
-  role: "system" | "user" | "assistant" | "model" | "prompt";
+  role: "system" | "assistant" | "model" | "prompt";
   follow_up?: boolean;
   name?: string;
   content: string;
@@ -30,7 +48,7 @@ export interface ToolCallHistory {
   args: string;
 }
 
-export type LLMHistory = ContentHistory | ToolHistory;
+export type LLMHistory = UserContentHistory | ContentHistory | ToolHistory;
 
 export interface UserRunHistory {
   at: number;
