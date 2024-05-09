@@ -23,6 +23,7 @@ export interface UserImageContent {
 export interface UserContentHistory {
   role: "user";
   name?: string;
+  follow_up?: boolean;
   content: string | Array<UserTextContent | UserImageContent>;
 }
 
