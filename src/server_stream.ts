@@ -75,7 +75,7 @@ export interface ServerErrorStream {
 }
 
 export interface ServerClientActionStream {
-  type: "client-action";
+  type: "client_action";
   data: {
     id: string;
     run_id: string;
