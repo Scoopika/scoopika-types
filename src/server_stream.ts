@@ -78,7 +78,6 @@ export interface ServerClientActionStream {
   type: "client_action";
   data: {
     id: string;
-    run_id: string;
     tool_name: string;
     arguments: Record<string, any>;
   }
