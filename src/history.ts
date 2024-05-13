@@ -55,6 +55,8 @@ export interface UserRunHistory {
   at: number;
   role: "user";
   user_id?: string;
+  run_id: string;
+  session_id: string;
   request: Inputs;
 }
 

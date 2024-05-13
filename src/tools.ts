@@ -1,4 +1,5 @@
 import { AgentResponse } from "./agents";
+import { LLMToolCall } from "./models";
 import { Parameter } from "./parameters";
 import { Prompt } from "./prompts";
 
@@ -35,6 +36,7 @@ export interface ApiToolSchema {
 
 export interface ClientSideToolSchema {
   type: "client-side";
+  executor: (data: any) => any;
   tool: Tool;
 }
 
@@ -52,3 +54,8 @@ export type ToolSchema =
   | FunctionToolSchema
   | ApiToolSchema
   | ClientSideToolSchema;
+
+export interface ToolRunHistory<Data = any> {
+  call: LLMToolCall;
+  result: Data;
+}

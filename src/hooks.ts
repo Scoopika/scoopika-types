@@ -1,5 +1,6 @@
 import { AgentResponse, StreamMessage, AgentData } from "./agents";
 import { LLMToolCall } from "./models";
+import { ServerClientActionStream } from "./server_stream";
 
 export interface Hooks {
   onStream?: (stream: StreamMessage) => any;
@@ -9,12 +10,7 @@ export interface Hooks {
   onToolCall?: (call: LLMToolCall) => any;
   onToolResult?: (tool: { call: LLMToolCall; result: any }) => any;
   onClientSideAction?: (
-    action: {
-      id: string;
-      run_id: string;
-      tool_name: string;
-      arguments: Record<string, any>;
-    }
+    action: ServerClientActionStream["data"]
   ) => any;
   onError?: (data: {healed?: boolean, error: string}) => any;
   onAgentResponse?: (res: { name: string; response: AgentResponse }) => any;
