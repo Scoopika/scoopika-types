@@ -47,7 +47,7 @@ export interface AgentToolSchema {
     session_id: string,
     run_id: string,
     instructions: string
-  ) => string;
+  ) => Promise<string>;
   tool: Tool;
 }
 
