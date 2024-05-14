@@ -1,6 +1,6 @@
 import { Prompt } from "./prompts";
 import { ToolSchema } from "./tools";
-import { LLMResponse, LLMToolCall } from "./models";
+import { LLMResponse, LLMTextResponse, LLMToolCall } from "./models";
 import { LLMHistory, RunHistory, StoreSession } from "./history";
 import { Inputs } from "./inputs";
 
@@ -32,7 +32,7 @@ export interface AgentInnerRunResult {
 export interface AgentResponse {
   run_id: string;
   session_id: string;
-  response: LLMResponse;
+  response: LLMTextResponse;
 }
 
 export interface StreamMessage {
