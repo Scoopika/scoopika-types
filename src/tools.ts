@@ -42,18 +42,20 @@ export interface ClientSideToolSchema {
 
 export interface AgentToolSchema {
   type: "agent";
+  agent_id: string;
   executor: (
     session_id: string,
     run_id: string,
-    instructions: string 
-  ) => AgentResponse;
+    instructions: string
+  ) => string;
   tool: Tool;
 }
 
 export type ToolSchema =
   | FunctionToolSchema
   | ApiToolSchema
-  | ClientSideToolSchema;
+  | ClientSideToolSchema
+  | AgentToolSchema;
 
 export interface ToolRunHistory<Data = any> {
   call: LLMToolCall;
