@@ -123,6 +123,6 @@ export interface LLMHost<Client> {
     client: Client,
     inputs: LLMFunctionBaseInputs,
     schema: ToolParameters,
-    stream: StreamFunc
+    stream: StreamFunc,
   ) => Promise<LLMJsonResponse>;
 }

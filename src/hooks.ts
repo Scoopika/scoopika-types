@@ -9,10 +9,8 @@ export interface Hooks {
   onStart?: (info: { run_id: string; session_id: string }) => any;
   onToolCall?: (call: LLMToolCall) => any;
   onToolResult?: (tool: { call: LLMToolCall; result: any }) => any;
-  onClientSideAction?: (
-    action: ServerClientActionStream["data"]
-  ) => any;
-  onError?: (data: {healed?: boolean, error: string}) => any;
+  onClientSideAction?: (action: ServerClientActionStream["data"]) => any;
+  onError?: (data: { healed?: boolean; error: string }) => any;
   onAgentResponse?: (res: { name: string; response: AgentResponse }) => any;
 }
 

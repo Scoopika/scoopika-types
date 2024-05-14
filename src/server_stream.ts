@@ -71,7 +71,7 @@ export interface ServerErrorStream {
   data: {
     headled?: boolean;
     error: string;
-  }
+  };
 }
 
 export interface ServerClientActionStream {
@@ -80,10 +80,10 @@ export interface ServerClientActionStream {
     id: string;
     tool_name: string;
     arguments: Record<string, any>;
-  }
+  };
 }
 
-export type ServerStream = 
+export type ServerStream =
   | ServerBaseStream
   | ServerStartStream
   | ServerTokenStream
@@ -95,4 +95,4 @@ export type ServerStream =
   | ServerBoxResponseStream
   | ServerEndStream
   | ServerErrorStream
-  | ServerClientActionStream
+  | ServerClientActionStream;

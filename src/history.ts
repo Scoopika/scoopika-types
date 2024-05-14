@@ -17,7 +17,7 @@ export interface UserImageContent {
   type: "image_url";
   image_url: {
     url: string;
-  }
+  };
 }
 
 export interface UserContentHistory {
