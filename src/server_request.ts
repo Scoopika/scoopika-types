@@ -1,17 +1,31 @@
-import { BoxHooks } from "./hooks";
+import { BoxHooks, Hooks } from "./hooks";
 import { Inputs } from "./inputs";
 
-export interface LoadRequest {
-  method: "get";
-  resource: "agent" | "box";
+export interface LoadAgentRequest {
+  type: "load_agent";
   payload: {
     id: string;
   }
 }
 
-export interface RunRequest {
-  method: "post";
-  resource: "agent" | "box";
+export interface LoadBoxRequest {
+  type: "load_box";
+  payload: {
+    id: string;
+  }
+}
+
+export interface RunAgentRequest {
+  type: "run_agent";
+  payload: {
+    id: string;
+    inputs: Inputs;
+    hooks: Array<keyof Hooks>;
+  }
+}
+
+export interface RunBoxRequest {
+  type: "run_box";
   payload: {
     id: string;
     inputs: Inputs;
@@ -20,8 +34,7 @@ export interface RunRequest {
 }
 
 export interface GetSessionRequest {
-  method: "get";
-  resource: "session";
+  type: "get_session";
   payload: {
     id: string;
     allow_new?: boolean;
@@ -29,8 +42,7 @@ export interface GetSessionRequest {
 }
 
 export interface NewSessionRequest {
-  method: "post";
-  resource: "session";
+  type: "new_session";
   payload: {
     id?: string;
     user_name?: string;
@@ -39,32 +51,31 @@ export interface NewSessionRequest {
 }
 
 export interface DeleteSessionRequest {
-  method: "delete";
-  resource: "session";
+  type: "delete_session";
   payload: {
     id: string;
   }
 }
 
 export interface GetSessionRunsRequest {
-  method: "post";
-  resource: "session_runs";
+  type: "get_session_runs";
   payload: {
     id: string;
   }
 }
 
 export interface ListUserSessionsRequest {
-  method: "get";
-  resource: "user_sessions";
+  type: "list_user_sessions";
   payload: {
     id: string;
   }
 }
 
 export type ServerRequest = 
-  | LoadRequest
-  | RunRequest
+  | LoadAgentRequest
+  | LoadBoxRequest
+  | RunAgentRequest
+  | RunBoxRequest
   | GetSessionRequest
   | NewSessionRequest
   | DeleteSessionRequest
