@@ -24,6 +24,7 @@ export interface GetSessionRequest {
   resource: "session";
   payload: {
     id: string;
+    allow_new?: boolean;
   }
 }
 
