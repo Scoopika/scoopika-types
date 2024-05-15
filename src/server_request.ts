@@ -1,3 +1,4 @@
+import { BoxHooks, Hooks } from "./hooks";
 import { Inputs } from "./inputs";
 
 export interface LoadRequest {
@@ -14,6 +15,7 @@ export interface RunRequest {
   payload: {
     id: string;
     inputs: Inputs;
+    hooks: Hooks | BoxHooks;
   }
 }
 
