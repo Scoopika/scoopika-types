@@ -1,7 +1,5 @@
-import { AgentResponse } from "./agents";
 import { LLMToolCall } from "./models";
 import { Parameter } from "./parameters";
-import { Prompt } from "./prompts";
 
 export interface ToolParameters {
   type: "object";
@@ -29,8 +27,9 @@ export interface FunctionToolSchema {
 export interface ApiToolSchema {
   type: "api";
   url: string;
-  method: "get" | "post" | "delete" | "post" | "patch" | "put";
+  method: string;
   headers: Record<string, string>;
+  body?: Record<string, any> | string;
   tool: Tool;
 }
 
@@ -61,3 +60,21 @@ export interface ToolRunHistory<Data = any> {
   call: LLMToolCall;
   result: Data;
 }
+
+export interface InApiTool {
+  type: "api";
+  name: string;
+  description: string;
+  url: string;
+  method: string;
+  headers: Record<string, string>;
+  body?: string;
+  inputs: ToolParameters;
+}
+
+export interface InAgentTool {
+  type: "agent";
+  id: string;
+}
+
+export type InTool = InApiTool | InAgentTool;

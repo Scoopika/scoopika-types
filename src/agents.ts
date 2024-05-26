@@ -1,7 +1,7 @@
 import { Prompt } from "./prompts";
-import { ToolSchema } from "./tools";
+import { InTool, ToolSchema } from "./tools";
 import { LLMResponse, LLMTextResponse, LLMToolCall } from "./models";
-import { LLMHistory, RunHistory, StoreSession } from "./history";
+import { LLMHistory, StoreSession } from "./history";
 import { Inputs } from "./inputs";
 
 export interface AgentData {
@@ -14,6 +14,7 @@ export interface AgentData {
   timeout?: number;
   tools: ToolSchema[];
   wanted_responses?: string[];
+  in_tools?: InTool[];
 }
 
 export interface AgentInnerRunResult {
