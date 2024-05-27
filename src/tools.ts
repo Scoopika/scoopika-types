@@ -67,7 +67,11 @@ export interface InApiTool {
   description: string;
   url: string;
   method: string;
-  headers: Record<string, string>;
+  headers: {
+    key: string;
+    value: string;
+    encrypted: boolean;
+  }[];
   body?: string;
   inputs: ToolParameters;
 }
