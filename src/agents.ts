@@ -7,6 +7,7 @@ import { Inputs } from "./inputs";
 export interface AgentData {
   id: string;
   name: string;
+  voice?: string;
   avatar?: string;
   description: string;
   chained: boolean;
