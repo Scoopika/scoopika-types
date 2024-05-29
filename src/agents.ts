@@ -84,3 +84,21 @@ export interface AgentRunInputs {
   toolCallStream: (call: LLMToolCall) => any;
   toolResStream: (tool: { call: LLMToolCall; result: any }) => any;
 }
+
+export type SpeakLanguages = 
+  | "en"
+  | "es"
+  | "fr"
+  | "de"
+  | "it"
+  | "pt"
+  | "pl"
+  | "tr"
+  | "ru"
+  | "nl"
+  | "cs"
+  | "ar"
+  | "zh"
+  | "hu"
+  | "ko"
+  | "hi"

@@ -71,6 +71,15 @@ export interface ListUserSessionsRequest {
   }
 }
 
+export interface SpeakAgentRequest {
+  type: "speak";
+  payload: {
+    id: string;
+    text: string;
+    language?: string;
+  }
+}
+
 export type ServerRequest = 
   | LoadAgentRequest
   | LoadBoxRequest
@@ -81,3 +90,4 @@ export type ServerRequest =
   | DeleteSessionRequest
   | GetSessionRunsRequest
   | ListUserSessionsRequest
+  | SpeakAgentRequest
