@@ -9,6 +9,7 @@ import { Tool, ToolParameters } from "./tools";
 import OpenAI from "openai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { StreamFunc } from "./agents";
+import { HooksClass } from "./hooks";
 
 export interface LLMResponseFormat {
   type: "json_object";
@@ -107,16 +108,15 @@ export interface LLMHost<Client> {
   model_role: "assistant" | "model";
   system_role: "user" | "system";
   allow_vision?: string[];
-  text: (
+  text: (args: {
     run_id: string,
     client: Client,
-    stream: StreamFunc,
+    hooks: HooksClass,
     inputs: LLMFunctionBaseInputs,
-  ) => Promise<LLMTextResponse>;
+  }) => Promise<LLMTextResponse>;
   json: (
     client: Client,
     inputs: LLMFunctionBaseInputs,
     schema: ToolParameters,
-    stream: StreamFunc,
   ) => Promise<LLMJsonResponse>;
 }

@@ -66,4 +66,5 @@ export interface RunOptions {
   run_id?: string;
   save_history?: boolean;
   max_tools?: number;
+  speak?: boolean;
 }

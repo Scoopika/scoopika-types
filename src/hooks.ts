@@ -36,8 +36,8 @@ export interface HooksClass {
   addHook: <K extends keyof BoxHooks>(
     type: K, func: BoxHooks[K]
   ) => void;
-  executeHooks: <K extends keyof BoxHooks>(
+  executeHook: <K extends keyof BoxHooks>(
     key: K,
     data: Parameters<NonNullable<BoxHooks[K]>>[0]
-  ) => void;
+  ) => Promise<void>;
 }

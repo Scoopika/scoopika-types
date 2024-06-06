@@ -1,11 +1,11 @@
 {
   "name": "@scoopika/types",
-  "version": "2.0.6",
+  "version": "2.0.9",
   "description": "",
   "main": "",
   "types": "./dist/index.d.ts",
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "build": "npx tsup --dts-resolve && cp package.json ./dist/"
   },
