@@ -1,6 +1,6 @@
 import { Prompt } from "./prompts";
 import { InTool, ToolSchema } from "./tools";
-import { LLMResponse, LLMTextResponse, LLMToolCall } from "./models";
+import { LLMResponse, LLMToolCall } from "./models";
 import { LLMHistory, StoreSession } from "./history";
 import { Inputs } from "./inputs";
 
@@ -34,12 +34,17 @@ export interface AgentInnerRunResult {
 export interface AgentResponse {
   run_id: string;
   session_id: string;
-  response: LLMTextResponse;
+  content: string;
+  audio: AudioRes[];
+  tools_calls: {
+    call: LLMToolCall;
+    result: any;
+  }[];
 }
 
 export interface StreamMessage {
   final?: boolean;
-  type: "text" | "image";
+  type: "text";
   run_id: string;
   content: string;
 }
@@ -85,7 +90,14 @@ export interface AgentRunInputs {
   toolResStream: (tool: { call: LLMToolCall; result: any }) => any;
 }
 
-export type SpeakLanguages = 
+export interface AudioRes {
+  index: number;
+  run_id: string;
+  audio_id: string;
+  read: string;
+}
+
+export type SpeakLanguages =
   | "en"
   | "es"
   | "fr"
@@ -101,4 +113,4 @@ export type SpeakLanguages =
   | "zh"
   | "hu"
   | "ko"
-  | "hi"
+  | "hi";

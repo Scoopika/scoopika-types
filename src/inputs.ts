@@ -9,9 +9,9 @@ export type Input =
 
 export type PlugFunc = (context: string) => string | Promise<string>;
 
-export interface LocalAudio {
-  type: "local";
-  path: string;
+export interface BufferAudio {
+  type: "buffer";
+  buffer: Buffer | ArrayBuffer;
 }
 
 export interface RemoteAudio {
@@ -29,7 +29,7 @@ export interface BinaryAudio {
   binary: Buffer | ArrayBuffer;
 }
 
-export type AudioPlug = LocalAudio | RemoteAudio | FuncAudio;
+export type AudioPlug = BufferAudio | RemoteAudio | FuncAudio;
 
 export interface Plug {
   rag?: string | PlugFunc;
@@ -49,3 +49,21 @@ export type Inputs = Record<string, Input> & {
   save_history?: boolean;
   plug?: Plug;
 };
+
+export interface RunInputs {
+  message?: string;
+  audio?: AudioPlug[];
+  images?: string[];
+  context?: {
+    description: string;
+    value: string;
+  }[];
+}
+
+export interface RunOptions {
+  tools?: ToolSchema[];
+  session_id?: string;
+  run_id?: string;
+  save_history?: boolean;
+  max_tools?: number;
+}

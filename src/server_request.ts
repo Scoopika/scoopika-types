@@ -5,14 +5,14 @@ export interface LoadAgentRequest {
   type: "load_agent";
   payload: {
     id: string;
-  }
+  };
 }
 
 export interface LoadBoxRequest {
   type: "load_box";
   payload: {
     id: string;
-  }
+  };
 }
 
 export interface RunAgentRequest {
@@ -21,7 +21,7 @@ export interface RunAgentRequest {
     id: string;
     inputs: Inputs;
     hooks: Array<keyof Hooks>;
-  }
+  };
 }
 
 export interface RunBoxRequest {
@@ -30,7 +30,7 @@ export interface RunBoxRequest {
     id: string;
     inputs: Inputs;
     hooks: Array<keyof BoxHooks>;
-  }
+  };
 }
 
 export interface GetSessionRequest {
@@ -38,7 +38,7 @@ export interface GetSessionRequest {
   payload: {
     id: string;
     allow_new?: boolean;
-  }
+  };
 }
 
 export interface NewSessionRequest {
@@ -47,28 +47,28 @@ export interface NewSessionRequest {
     id?: string;
     user_name?: string;
     user_id?: string;
-  }
+  };
 }
 
 export interface DeleteSessionRequest {
   type: "delete_session";
   payload: {
     id: string;
-  }
+  };
 }
 
 export interface GetSessionRunsRequest {
   type: "get_session_runs";
   payload: {
     id: string;
-  }
+  };
 }
 
 export interface ListUserSessionsRequest {
   type: "list_user_sessions";
   payload: {
     id: string;
-  }
+  };
 }
 
 export interface SpeakAgentRequest {
@@ -77,10 +77,10 @@ export interface SpeakAgentRequest {
     id: string;
     text: string;
     language?: string;
-  }
+  };
 }
 
-export type ServerRequest = 
+export type ServerRequest =
   | LoadAgentRequest
   | LoadBoxRequest
   | RunAgentRequest
@@ -90,4 +90,4 @@ export type ServerRequest =
   | DeleteSessionRequest
   | GetSessionRunsRequest
   | ListUserSessionsRequest
-  | SpeakAgentRequest
+  | SpeakAgentRequest;

@@ -63,6 +63,7 @@ export interface ToolRunHistory<Data = any> {
 
 export interface InApiTool {
   type: "api";
+  id: string;
   name: string;
   description: string;
   url: string;

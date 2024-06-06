@@ -1,4 +1,4 @@
-import { AgentData, AgentResponse, StreamMessage } from "./agents";
+import { AgentData, AgentResponse, AudioRes, StreamMessage } from "./agents";
 import { LLMToolCall } from "./models";
 
 export interface ServerBaseStream {
@@ -83,6 +83,11 @@ export interface ServerClientActionStream {
   };
 }
 
+export interface ServerAudioStream {
+  type: "audio";
+  data: AudioRes;
+}
+
 export type ServerStream =
   | ServerBaseStream
   | ServerStartStream
@@ -95,4 +100,5 @@ export type ServerStream =
   | ServerBoxResponseStream
   | ServerEndStream
   | ServerErrorStream
-  | ServerClientActionStream;
+  | ServerClientActionStream
+  | ServerAudioStream;
