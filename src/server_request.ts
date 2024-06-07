@@ -1,3 +1,5 @@
+import { AudioRes } from "./agents";
+import { StoreSession } from "./history";
 import { BoxHooks, Hooks } from "./hooks";
 import { Inputs } from "./inputs";
 
@@ -71,13 +73,18 @@ export interface ListUserSessionsRequest {
   };
 }
 
-export interface SpeakAgentRequest {
-  type: "speak";
+export interface GetRunRequest {
+  type: "get_run";
   payload: {
-    id: string;
-    text: string;
-    language?: string;
-  };
+    session: StoreSession | string;
+    run_id: string;
+    role?: "agent" | "user";
+  }
+}
+
+export interface ReadAudioRequest {
+  type: "read_audio";
+  payload: AudioRes | string;
 }
 
 export type ServerRequest =
@@ -90,4 +97,5 @@ export type ServerRequest =
   | DeleteSessionRequest
   | GetSessionRunsRequest
   | ListUserSessionsRequest
-  | SpeakAgentRequest;
+  | GetRunRequest
+  | ReadAudioRequest;

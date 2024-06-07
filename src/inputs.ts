@@ -9,9 +9,9 @@ export type Input =
 
 export type PlugFunc = (context: string) => string | Promise<string>;
 
-export interface BufferAudio {
-  type: "buffer";
-  buffer: Buffer | ArrayBuffer;
+export interface Base64Audio {
+  type: "base64";
+  value: string;
 }
 
 export interface RemoteAudio {
@@ -24,12 +24,7 @@ export interface FuncAudio {
   func: (req: Inputs) => string | Promise<string>;
 }
 
-export interface BinaryAudio {
-  type: "binary";
-  binary: Buffer | ArrayBuffer;
-}
-
-export type AudioPlug = BufferAudio | RemoteAudio | FuncAudio;
+export type AudioPlug = Base64Audio | RemoteAudio | FuncAudio;
 
 export interface Plug {
   rag?: string | PlugFunc;
