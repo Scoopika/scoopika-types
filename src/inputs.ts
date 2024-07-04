@@ -49,9 +49,11 @@ export interface RunInputs {
   message?: string;
   audio?: AudioPlug[];
   images?: string[];
+  urls?: string[];
   context?: {
     description: string;
     value: string;
+    scope: "session" | "run";
   }[];
 }
 
@@ -61,5 +63,5 @@ export interface RunOptions {
   run_id?: string;
   save_history?: boolean;
   max_tools?: number;
-  speak?: boolean;
+  voice?: boolean;
 }

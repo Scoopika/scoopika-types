@@ -2,13 +2,17 @@ import { AgentResponse, StreamMessage, AgentData, AudioRes } from "./agents";
 import { LLMToolCall } from "./models";
 import { ServerClientActionStream } from "./server_stream";
 
+export interface AudioStream extends AudioRes {
+  chunk_index: number;
+}
+
 type HookFunc<Data> = (data: Data) => any;
 
 export interface Hooks {
   onStream?: HookFunc<StreamMessage>;
   onOutput?: HookFunc<StreamMessage>;
   onToken?: HookFunc<string>;
-  onAudio?: HookFunc<AudioRes>;
+  onAudio?: HookFunc<AudioStream>;
   onFinish?: HookFunc<AgentResponse>;
   onStart?: HookFunc<{run_id: string; session_id: string}>;
   onToolCall?: HookFunc<LLMToolCall>;

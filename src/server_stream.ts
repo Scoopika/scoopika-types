@@ -1,4 +1,5 @@
-import { AgentData, AgentResponse, AudioRes, StreamMessage } from "./agents";
+import { AgentData, AgentResponse, StreamMessage } from "./agents";
+import { AudioStream } from "./hooks";
 import { LLMToolCall } from "./models";
 
 export interface ServerBaseStream {
@@ -85,7 +86,12 @@ export interface ServerClientActionStream {
 
 export interface ServerAudioStream {
   type: "audio";
-  data: AudioRes;
+  data: AudioStream;
+}
+
+export interface GeneratedJSONStream {
+  type: "generated_json";
+  data: Record<string, any>;
 }
 
 export type ServerStream =
@@ -101,4 +107,5 @@ export type ServerStream =
   | ServerEndStream
   | ServerErrorStream
   | ServerClientActionStream
-  | ServerAudioStream;
+  | ServerAudioStream
+  | GeneratedJSONStream;

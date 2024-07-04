@@ -1,11 +1,8 @@
 import { LLMToolCall } from "./models";
-import { Parameter } from "./parameters";
+import { z } from 'zod';
+import { JSONSchema } from "openai/lib/jsonschema";
 
-export interface ToolParameters {
-  type: "object";
-  properties: Record<string, Parameter>;
-  required?: Array<string>;
-}
+export type ToolParameters = JSONSchema;
 
 export interface ToolFunction {
   name: string;
@@ -56,11 +53,6 @@ export type ToolSchema =
   | ClientSideToolSchema
   | AgentToolSchema;
 
-export interface ToolRunHistory<Data = any> {
-  call: LLMToolCall;
-  result: Data;
-}
-
 export interface InApiTool {
   type: "api";
   id: string;
@@ -83,3 +75,19 @@ export interface InAgentTool {
 }
 
 export type InTool = InApiTool | InAgentTool;
+
+export interface ToolRunHistory<Data = any> {
+  call: LLMToolCall;
+  result: Data;
+}
+
+export interface CoreTool<
+  PARAMETERS extends z.ZodTypeAny = any, RESULT = any
+> {
+  name: string;
+  description?: string;
+  parameters: PARAMETERS;
+  execute: (
+    (args: z.infer<PARAMETERS>) => RESULT | PromiseLike<RESULT> | void
+  );
+}

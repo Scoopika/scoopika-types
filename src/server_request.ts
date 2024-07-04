@@ -1,7 +1,8 @@
+import { JSONSchema } from "openai/lib/jsonschema";
 import { AudioRes } from "./agents";
 import { StoreSession } from "./history";
 import { BoxHooks, Hooks } from "./hooks";
-import { Inputs } from "./inputs";
+import { RunInputs, RunOptions } from "./inputs";
 
 export interface LoadAgentRequest {
   type: "load_agent";
@@ -21,7 +22,8 @@ export interface RunAgentRequest {
   type: "run_agent";
   payload: {
     id: string;
-    inputs: Inputs;
+    inputs: RunInputs;
+    options?: RunOptions;
     hooks: Array<keyof Hooks>;
   };
 }
@@ -30,7 +32,8 @@ export interface RunBoxRequest {
   type: "run_box";
   payload: {
     id: string;
-    inputs: Inputs;
+    inputs: RunInputs;
+    options?: RunOptions;
     hooks: Array<keyof BoxHooks>;
   };
 }
@@ -87,6 +90,17 @@ export interface ReadAudioRequest {
   payload: AudioRes | string;
 }
 
+export interface GenerateJSONRequest {
+  type: "generate_json";
+  payload: {
+    id: string;
+    inputs: RunInputs;
+    options?: RunOptions;
+    schema: JSONSchema;
+    system_prompt?: string;
+  }
+}
+
 export type ServerRequest =
   | LoadAgentRequest
   | LoadBoxRequest
@@ -98,4 +112,5 @@ export type ServerRequest =
   | GetSessionRunsRequest
   | ListUserSessionsRequest
   | GetRunRequest
-  | ReadAudioRequest;
+  | ReadAudioRequest
+  | GenerateJSONRequest;

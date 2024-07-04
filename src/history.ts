@@ -1,12 +1,13 @@
 import { AgentResponse } from "./agents";
-import { Inputs } from "./inputs";
-import { LLMResponse, LLMToolCall } from "./models";
+import { RunInputs } from "./inputs";
+import { LLMToolCall } from "./models";
 
 export interface StoreSession {
   id: string;
   user_name?: string;
   saved_prompts: Record<string, string>;
   user_id?: string;
+  title?: string;
 }
 
 export interface UserTextContent {
@@ -58,7 +59,8 @@ export interface UserRunHistory {
   user_id?: string;
   run_id: string;
   session_id: string;
-  request: Inputs;
+  request: RunInputs;
+  resolved_message: string;
 }
 
 export interface AgentRunHistory {

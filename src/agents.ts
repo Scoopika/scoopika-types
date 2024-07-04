@@ -3,6 +3,7 @@ import { InTool, ToolSchema } from "./tools";
 import { LLMResponse, LLMToolCall } from "./models";
 import { LLMHistory, StoreSession } from "./history";
 import { Inputs } from "./inputs";
+import { AgenticToolSchema } from "./agentic_tools";
 
 export interface AgentData {
   id: string;
@@ -16,6 +17,7 @@ export interface AgentData {
   tools: ToolSchema[];
   wanted_responses?: string[];
   in_tools?: InTool[];
+  agentic_tools?: AgenticToolSchema[];
 }
 
 export interface AgentInnerRunResult {
@@ -96,21 +98,3 @@ export interface AudioRes {
   audio_id: string;
   read: string;
 }
-
-export type SpeakLanguages =
-  | "en"
-  | "es"
-  | "fr"
-  | "de"
-  | "it"
-  | "pt"
-  | "pl"
-  | "tr"
-  | "ru"
-  | "nl"
-  | "cs"
-  | "ar"
-  | "zh"
-  | "hu"
-  | "ko"
-  | "hi";
